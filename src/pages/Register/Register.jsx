@@ -26,22 +26,12 @@ export const Register = () => {
     }
   };
 
-  const resetForm = () => {
-    setName('');
-    setEmail('');
-    setPassword('');
-  };
-
   const handleSubmit = async event => {
     event.preventDefault();
 
-    console.log({ name, email, password });
-
     try {
       const res = await signup({ name, email, password });
-      console.log(res);
       if (res.error) throw Error('Не удалось создать нового пользователя');
-      resetForm();
       Notify.success('Вы успешно зарегистрированы');
     } catch (error) {
       Notify.failure(error.message);

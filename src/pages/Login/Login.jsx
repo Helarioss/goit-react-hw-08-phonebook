@@ -8,6 +8,8 @@ export const Login = () => {
 
   const [login, { isLoading }] = useLoginMutation();
 
+  console.log('render login');
+
   const handleChange = event => {
     const { name, value } = event.target;
 
@@ -26,11 +28,8 @@ export const Login = () => {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    console.log({ email, password });
-
     try {
       const res = await login({ email, password });
-      console.log(res);
       if (res.error) throw Error('Не удалось войти в систему');
     } catch (error) {
       Notify.failure(error.message);

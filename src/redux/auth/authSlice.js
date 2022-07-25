@@ -45,3 +45,4 @@ export const authSlice = createSlice({
 
 export const getEmail = state => state.auth.user.email;
 export const getToken = state => state.auth.token;
+export const getIsAuthenticated = state => state.auth.isAuthenticated;

@@ -48,5 +48,6 @@ export const {
   useSignupMutation,
   useLoginMutation,
   useLogoutMutation,
+  useGetCurrentUserQuery,
   useLazyGetCurrentUserQuery,
 } = authApi;
