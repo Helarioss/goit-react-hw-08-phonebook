@@ -10,7 +10,7 @@ import { PageNotFound } from 'pages/PageNotFound';
 import { useGetCurrentUser } from 'hooks/useGetCurrentUser';
 
 export const App = () => {
-  const { isFetching, isUninitialized } = useGetCurrentUser();
+  const { isFetching } = useGetCurrentUser();
   // console.log('isFetching', isFetching);
   // console.log('isUninitialized', isUninitialized);
   console.log('renderApp');
