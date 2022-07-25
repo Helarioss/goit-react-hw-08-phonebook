@@ -3,7 +3,6 @@ import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
 
 export const Contacts = () => {
-  console.log('render contacts');
   return (
     <div>
       <h1>Phonebook</h1>

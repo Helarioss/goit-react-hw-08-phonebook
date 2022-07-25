@@ -20,7 +20,6 @@ export const authApi = createApi({
         method: 'POST',
         body: user,
       }),
-      invalidatesTags: ['User'],
     }),
     login: builder.mutation({
       query: user => ({
@@ -28,18 +27,15 @@ export const authApi = createApi({
         method: 'POST',
         body: user,
       }),
-      invalidatesTags: ['User'],
     }),
     logout: builder.mutation({
       query: () => ({
         url: '/users/logout',
         method: 'POST',
       }),
-      invalidatesTags: ['User'],
     }),
     getCurrentUser: builder.query({
       query: () => `users/current`,
-      providesTags: ['User'],
     }),
   }),
 });

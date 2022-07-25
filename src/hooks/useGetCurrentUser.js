@@ -3,25 +3,22 @@ import { useSelector } from 'react-redux';
 import { getToken } from 'redux/auth/authSlice';
 import { useGetCurrentUserQuery } from 'services/authApi';
 
-export const useGetCurrentUser = () => {
+export const useGetCurrentUser = async () => {
   const isFirstRender = useRef(true);
   const token = useSelector(getToken);
 
-  const { data, isFetching, isUninitialized } = useGetCurrentUserQuery(
-    undefined,
-    {
-      skip: !isFirstRender.current || !token,
-    }
-  );
-
-  console.log('getCurrentUser', data, isFetching, isUninitialized);
-
-  //   console.log('isFetching', isFetching);
-  //   console.log('isUninitialized', isUninitialized);
+  const { isFetching } = useGetCurrentUserQuery(undefined, {
+    skip: !token || !isFirstRender.current,
+    //   refetchOnMountOrArgChange: true,
+  });
 
   useEffect(() => {
     isFirstRender.current = false;
   }, []);
 
-  return { isFetching, isUninitialized };
+  useEffect(() => {
+    console.log(isFetching);
+  }, [isFetching]);
+
+  return { isFetching };
 };

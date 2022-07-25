@@ -11,11 +11,9 @@ import { useGetCurrentUser } from 'hooks/useGetCurrentUser';
 
 export const App = () => {
   const { isFetching } = useGetCurrentUser();
-  // console.log('isFetching', isFetching);
-  // console.log('isUninitialized', isUninitialized);
-  console.log('renderApp');
-  return (
-    !isFetching && (
+
+  if (!isFetching)
+    return (
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -46,6 +44,5 @@ export const App = () => {
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-    )
-  );
+    );
 };

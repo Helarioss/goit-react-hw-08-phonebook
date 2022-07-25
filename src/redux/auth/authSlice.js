@@ -8,6 +8,7 @@ const initialState = {
   },
   token: null,
   isAuthenticated: false,
+  isRefreshing: false,
 };
 
 export const authSlice = createSlice({
@@ -33,16 +34,31 @@ export const authSlice = createSlice({
     builder.addMatcher(authApi.endpoints.logout.matchFulfilled, () => {
       return initialState;
     });
+
     builder.addMatcher(
       authApi.endpoints.getCurrentUser.matchFulfilled,
       (state, { payload }) => {
         state.user = payload;
         state.isAuthenticated = true;
+        state.isRefreshing = false;
       }
     );
+    //  builder.addMatcher(
+    //    authApi.endpoints.getCurrentUser.matchPending,
+    //    state => {
+    //      state.isRefreshing = true;
+    //    }
+    //  );
+    // builder.addMatcher(
+    //   authApi.endpoints.getCurrentUser.matchRejected,
+    //   state => {
+    //     state.isRefreshing = false;
+    //   }
+    // );
   },
 });
 
 export const getEmail = state => state.auth.user.email;
 export const getToken = state => state.auth.token;
 export const getIsAuthenticated = state => state.auth.isAuthenticated;
+export const getIsRefreshing = state => state.auth.isRefreshing;
