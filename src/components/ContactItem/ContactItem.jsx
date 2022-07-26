@@ -1,30 +1,34 @@
-import { Notify } from 'notiflix';
+import { IconButton, ListItem, ListItemText } from '@mui/material';
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDeleteContactMutation } from 'services/contactsApi';
-
-import { Info, Item } from './ContactItem.styled';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const ContactItem = ({ id, name, number }) => {
   const [deleteContact, { isLoading, isSuccess }] = useDeleteContactMutation();
 
   useEffect(() => {
-    if (isSuccess) Notify.success('The contact was successfully deleted');
+    if (isSuccess) toast.success('The contact was successfully deleted');
   }, [isSuccess]);
 
   return (
-    <Item>
-      <Info>
-        {name}: {number}
-      </Info>
-      <button
-        type="button"
-        disabled={isLoading}
-        onClick={() => deleteContact(id)}
-      >
-        Delete
-      </button>
-    </Item>
+    <ListItem
+      secondaryAction={
+        <>
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            disabled={isLoading}
+            onClick={() => deleteContact(id)}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </>
+      }
+    >
+      <ListItemText primary={name} secondary={number} />
+    </ListItem>
   );
 };
 
