@@ -61,7 +61,6 @@ const Register = () => {
             id="name"
             label="Name"
             name="name"
-            autoComplete="name"
             autoFocus
             value={formik.values.name}
             onChange={formik.handleChange}
@@ -76,7 +75,6 @@ const Register = () => {
             id="email"
             label="Email"
             name="email"
-            autoComplete="email"
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -91,7 +89,6 @@ const Register = () => {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
