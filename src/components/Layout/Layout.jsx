@@ -5,7 +5,7 @@ import { getIsAuthenticated } from 'redux/auth/authSlice';
 import Container from '@mui/material/Container';
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 import { UserMenu } from 'components/UserMenu';
-import { NavLinkStyled } from 'components/NavLinkStyled';
+import { NavLinkStyled } from './Layout.styled';
 import { Spinner } from 'components/Spinner';
 
 export const Layout = () => {

@@ -1,16 +1,14 @@
-import { Route, Routes } from 'react-router-dom';
-import { Layout } from 'components/Layout';
-import { PrivateRoute } from 'components/PrivateRoute';
-import { PublicRoute } from 'components/PublicRoute';
-import { useLazyGetCurrentUserQuery } from 'services/authApi';
-
 import { lazy, useEffect, useRef } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { getToken } from 'redux/auth/authSlice';
+import { Route, Routes } from 'react-router-dom';
 
+import { useLazyGetCurrentUserQuery } from 'services/authApi';
+import { Layout } from 'components/Layout';
+import { PrivateRoute } from 'components/PrivateRoute';
+import { PublicRoute } from 'components/PublicRoute';
 import 'react-toastify/dist/ReactToastify.css';
-// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const Home = lazy(() => import('pages/Home'));
 const Login = lazy(() => import('pages/Login'));
